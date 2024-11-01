@@ -5,6 +5,7 @@ This module serves as a wrapper for the `solc` package, creating a packaged, com
 ## Executing Solc with Inter-Process Communication
 In this example, we use the `child_process` module to spawn the `solc` executable as a separate process and send Solidity code for compilation.
 ```typescript
+import {Configuration} from "solc";
 import {Out} from "solc";
 import {ChildProcess} from "child_process";
 import {execFile} from "child_process";
@@ -13,7 +14,7 @@ let path: string = /** solc.exe */
 let solc: ChildProcess = execFile(path);
 let out: Out;
 solc.on("message", response => out = JSON.parse(response));
-solc.send(JSON.stringify({
+solc.send(JSON.stringify(Configuration({
     src: `
         pragma solidity ^0.8.24;
 
@@ -32,18 +33,19 @@ solc.send(JSON.stringify({
             runs: 200
         }
     }
-}));
+})));
 solc.kill();
 ```
 
 ## Using the Compile Method Directly
 This example demonstrates the use of `compile` to handle input directly, compiling the Solidity code within the same process.
 ```typescript
+import {Configuration} from "solc";
 import {Out} from "solc";
 import {compile} from "solc";
 
 let out: Out = 
-    compile({
+    compile(Configuration({
         src: `
             pragma solidity ^0.8.24;
 
@@ -62,5 +64,5 @@ let out: Out =
                 runs: 200
             }
         }
-    });
+    }));
 ```
