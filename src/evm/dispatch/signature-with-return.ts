@@ -1,0 +1,1 @@
+export type SignatureWithReturn = `function ${string}(${string}) external view returns (${string})`;

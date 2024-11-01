@@ -1,7 +1,7 @@
 export type Configuration = {
     language: "Solidity" | "Vyper" | "lll" | "assembly";
     sources: {
-        [contractname: string]: {
+        [contract: string]: {
             keccak256?: string;
             urls?: string[];
             content?: string;
@@ -19,7 +19,7 @@ export type Configuration = {
         };
         libraries?: {
             [filename: string]: {
-                [libraryname: string]: string;
+                [library: string]: string;
             }
         },
         outputSelection?: {
