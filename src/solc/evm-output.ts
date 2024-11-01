@@ -6,15 +6,15 @@ export type EvmOutput = {
     legacyAssembly?: object;
     bytecode?: Bytecode;
     deployedBytecode?: Bytecode;
-    methodIdentifiers?: {[selector: This.Evm.Dispatch.Selector]: string;};
+    methodIdentifiers?: {[selector: This.Evm.TypeSystem.Selector]: string;};
     gasEstimates?: {
         creation?: {
             codeDepositCost?: string;
             executionCost?: string;
             totalCost?: string;
         };
-        external?: {[selector: This.Evm.Dispatch.Selector]: string};
-        internal?: {[selector: This.Evm.Dispatch.Selector]: string};
+        external?: {[selector: This.Evm.TypeSystem.Selector]: string};
+        internal?: {[selector: This.Evm.TypeSystem.Selector]: string};
     };
 };
 
