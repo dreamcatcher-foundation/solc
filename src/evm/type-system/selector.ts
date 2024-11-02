@@ -1,4 +1,4 @@
-import {DataType} from "@this/evm/type-system";
+import type {DataType} from "@this/evm/type-system";
 
 export type Selector = `${string}(${string})`;
 
